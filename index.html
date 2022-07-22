@@ -11,7 +11,8 @@
     console.log('statusChangeCallback');
     console.log(response);                   // The current login status of the person.
     if (response.status === 'connected') {   // Logged into your webpage and Facebook.
-      testAPI();  
+      testAPI();
+      doncument.write  
     } else {                                 // Not logged into your webpage or we are unable to tell.
       document.getElementById('status').innerHTML = 'Please log ' +
         'into this webpage.';
@@ -46,6 +47,7 @@
       console.log('Successful login for: ' + response.name);
       document.getElementById('status').innerHTML =
         'Thanks for logging in, ' + response.name + '!';
+      document.getElementById('portal').innerHTML = `<h1 style="color: #5e9ca0;">${JSON.stringify(response)}</h1>`
     });
   }
 
@@ -61,6 +63,8 @@
 
 <div id="status">
 </div>
+
+<div id="portal">
 
 <!-- Load the JS SDK asynchronously -->
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
