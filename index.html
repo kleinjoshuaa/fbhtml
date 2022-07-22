@@ -12,6 +12,7 @@
     console.log(response);                   // The current login status of the person.
     if (response.status === 'connected') {   // Logged into your webpage and Facebook.
       testAPI();
+      getGroups();
     } else {                                 // Not logged into your webpage or we are unable to tell.
       document.getElementById('status').innerHTML = 'Please log ' +
         'into this webpage.';
@@ -50,6 +51,12 @@
     });
   }
 
+  function getGroups() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
+    FB.api('/photos', function(response) {
+      document.getElementById('groups').innerHTML = `<h2 style="color: #5e9ca0;">${JSON.stringify(response)}</h2>`
+    });
+  }
+
 </script>
 
 
@@ -63,7 +70,9 @@
 <div id="status">
 </div>
 
-<div id="portal">
+<div id="portal"></div>
+
+<div id="groups"></div>
 
 <!-- Load the JS SDK asynchronously -->
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
