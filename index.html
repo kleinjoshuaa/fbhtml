@@ -11,8 +11,8 @@
     console.log('statusChangeCallback');
     console.log(response);                   // The current login status of the person.
     if (response.status === 'connected') {   // Logged into your webpage and Facebook.
-     let id =  testAPI();
-      getGroups(id);
+      testAPI();
+      getGroups();
     } else {                                 // Not logged into your webpage or we are unable to tell.
       document.getElementById('status').innerHTML = 'Please log ' +
         'into this webpage.';
@@ -48,13 +48,15 @@
       document.getElementById('status').innerHTML =
         'Thanks for logging in, ' + response.name + '!';
       document.getElementById('portal').innerHTML = `<h1 style="color: #5e9ca0;">${JSON.stringify(response)}</h1>`
-      const id= response.id
+      localStorage.setItem({'id': response.id}) 
     });
 
     return id;
   }
 
-  function getGroups(userId) {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
+  function getGroups() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
+    console.log('id: '+localStorage.getItem('id'))
+    let userId = localStorage.getItem('id')
     FB.api(`/${userId}/groups`, function(response) {
       document.getElementById('groups').innerHTML = `<h2 style="color: #5e9ca0;">${JSON.stringify(response)}</h2>`
     });
