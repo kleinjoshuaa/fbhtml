@@ -50,8 +50,6 @@
       document.getElementById('portal').innerHTML = `<h1 style="color: #5e9ca0;">${JSON.stringify(response)}</h1>`
       localStorage.setItem('id', response.id) 
     });
-
-    return id;
   }
 
   function getGroups() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
