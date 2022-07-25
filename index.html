@@ -60,7 +60,11 @@
     });
   }
 
-
+function logout() {
+  FB.logout(function(response) {
+   // Person is now logged out
+});
+}
 
 
 </script>
@@ -75,6 +79,11 @@
 
 <div id="status">
 </div>
+
+<br />
+<button onclick="logout();"> log out </button>
+
+
 
 <div id="portal"></div>
 
