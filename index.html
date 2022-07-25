@@ -13,8 +13,9 @@
     if (response.status === 'connected') { 
       document.getElementById('logout').innerHTML=`<button onclick="logout();"> log out </button>`  // Logged into your webpage and Facebook.
       testAPI();
-      getHomeTown();
-    } else {                                 // Not logged into your webpage or we are unable to tell.
+      getGroups();
+    } else {        
+      document.getElementById('logout').innerHTML = ''                         // Not logged into your webpage or we are unable to tell.
       document.getElementById('status').innerHTML = 'Please log ' +
         'into this webpage.';
     }
@@ -64,6 +65,7 @@
 function logout() {
   FB.logout(function(response) {
    // Person is now logged out
+   statusChangeCallback();
 });
 }
 
